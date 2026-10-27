@@ -23,6 +23,7 @@ pelo GitHub Pages para atender aos requisitos do Google Cloud / Google Play.
 - `assets/logo-120.png` — logotipo 120x120 px exigido pelo Google Cloud.
 - `assets/icon-192.png` — ícone do site.
 - `assets/screenshot-*.png` — capturas com dados fictícios.
+- `robots.txt` e `sitemap.xml` — indexação das páginas.
 
 Este repositório contém somente as páginas públicas. Ele não contém código do
 aplicativo, dados de pacientes, certificados ou credenciais.

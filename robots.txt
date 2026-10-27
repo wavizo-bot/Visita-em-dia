@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wavizo-bot.github.io/Visita-em-dia/sitemap.xml
