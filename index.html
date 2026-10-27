@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visita em dia — organização de visitas domiciliares</title>
+  <meta name="description" content="Visita em dia é o aplicativo para equipes de atenção domiciliar: cadastro, avaliação, classificação justificada e agenda de visitas. Funciona localmente, sem conta obrigatória.">
+  <meta name="theme-color" content="#174a3a">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Visita em dia — organização de visitas domiciliares">
+  <meta property="og:description" content="Cadastro, classificação justificada e agenda de visitas para equipes de atenção domiciliar. Dados no aparelho; backup opcional no seu próprio Google Drive.">
+  <meta property="og:image" content="assets/feature.png">
+  <link rel="icon" href="assets/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <style>
+    :root {
+      --paper: #f6f1e6;
+      --card: #fffdf8;
+      --ink: #202a25;
+      --muted: #5f665e;
+      --line: #ded5c5;
+      --green: #174a3a;
+      --green-deep: #10372b;
+      --clay: #a5553c;
+      --clay-soft: #fdf1e9;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.65 "Segoe UI", system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--green); text-underline-offset: 3px; }
+    img { max-width: 100%; height: auto; display: block; }
+    .wrap { width: min(1080px, 100% - 40px); margin: 0 auto; }
+
+    header { border-bottom: 1px solid var(--line); background: rgba(246, 241, 230, .92); position: sticky; top: 0; z-index: 20; backdrop-filter: blur(8px); }
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+    .brand img { width: 42px; height: 42px; border-radius: 12px; }
+    .brand .wordmark { display: block; }
+    .brand strong { display: block; font: 24px/1 Georgia, "Times New Roman", serif; color: var(--green); }
+    .brand .tagline { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+    nav { display: flex; align-items: center; gap: 20px; font-size: 14px; }
+    nav a { color: var(--muted); text-decoration: none; }
+    nav a:hover { color: var(--green); text-decoration: underline; }
+
+    .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; padding: 58px 0 54px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--clay); font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--clay); }
+    h1 { margin: 0 0 18px; font: 400 clamp(36px, 5vw, 54px)/1.08 Georgia, "Times New Roman", serif; color: var(--green-deep); letter-spacing: -.01em; }
+    .lead { max-width: 560px; margin: 0 0 26px; font-size: 18px; color: #46524b; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-block; padding: 12px 20px; border-radius: 10px; font-size: 14px; font-weight: 600; text-decoration: none; }
+    .btn-primary { background: var(--green); color: #fff8ec; }
+    .btn-primary:hover { background: var(--green-deep); }
+    .btn-secondary { border: 1px solid var(--line); background: var(--card); color: var(--green); }
+    .btn-secondary:hover { border-color: var(--green); }
+    .note { margin-top: 14px; color: var(--muted); font-size: 12px; }
+    .hero-shot { position: relative; }
+    .hero-shot img { border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 22px 50px rgba(32, 42, 37, .12); background: var(--card); }
+    .hero-shot figcaption { margin-top: 10px; color: var(--muted); font-size: 11px; text-align: right; }
+
+    section { padding: 46px 0; border-top: 1px solid var(--line); }
+    .section-head { max-width: 700px; margin-bottom: 26px; }
+    .kicker { margin: 0 0 8px; color: var(--clay); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    h2 { margin: 0 0 12px; font: 400 clamp(26px, 3.4vw, 34px)/1.2 Georgia, "Times New Roman", serif; color: var(--green); }
+    h3 { margin: 0 0 8px; font-size: 16px; color: var(--green-deep); }
+    p { margin: 0 0 14px; color: #3f4a43; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+    .card p { margin: 0; font-size: 14px; }
+    .num { display: inline-grid; place-items: center; width: 28px; height: 28px; margin-bottom: 12px; border-radius: 8px; background: var(--clay-soft); color: var(--clay); font: 700 13px/1 "Segoe UI", sans-serif; }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    ul.clean { margin: 0; padding: 0; list-style: none; }
+    ul.clean li { position: relative; margin-bottom: 10px; padding-left: 22px; color: #3f4a43; }
+    ul.clean li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 7px; height: 7px; border-radius: 50%; background: var(--clay); }
+    .callout { padding: 24px 26px; border-left: 3px solid var(--clay); border-radius: 0 12px 12px 0; background: var(--card); }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .shots figure { margin: 0; }
+    .shots img { border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+    .shots figcaption { margin-top: 7px; color: var(--muted); font-size: 11px; }
+
+    .legal-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .legal-links a { display: block; padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: inherit; text-decoration: none; }
+    .legal-links a:hover { border-color: var(--green); }
+    .legal-links strong { display: block; margin-bottom: 4px; color: var(--green); }
+    .legal-links span { color: var(--muted); font-size: 13px; }
+
+    .en { padding: 24px 26px; border: 1px dashed var(--line); border-radius: 12px; background: rgba(255, 253, 248, .6); }
+    .en p { font-size: 14px; }
+    .en p:last-child { margin-bottom: 0; }
+
+    footer { padding: 30px 0 42px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    footer .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 860px) {
+      .hero, .two { grid-template-columns: 1fr; }
+      .hero { gap: 30px; padding: 40px 0; }
+      .grid, .legal-links { grid-template-columns: 1fr; }
+      nav { gap: 14px; font-size: 13px; }
+    }
+    @media (max-width: 560px) {
+      .brand .tagline { display: none; }
+      nav a:not(.nav-legal) { display: none; }
+      .shots { grid-template-columns: 1fr; }
+      .actions .btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+        <img src="assets/icon-192.png" alt="" width="42" height="42">
+        <span class="wordmark"><strong>Visita em dia</strong><span class="tagline">cuidado que chega</span></span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="#sobre">O aplicativo</a>
+        <a href="#privacidade">Privacidade</a>
+        <a href="#documentos">Documentos</a>
+        <a class="nav-legal" href="termos-de-servico.html">Termos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" style="border-top:0">
+      <div>
+        <span class="eyebrow">Aplicativo para atenção domiciliar</span>
+        <h1>As visitas certas, na frequência certa.</h1>
+        <p class="lead">O <strong>Visita em dia</strong> organiza o cadastro de pacientes, a avaliação de cuidado, a justificativa da classificação e a agenda da equipe. Tudo em um só lugar, com os dados guardados no próprio aparelho.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#sobre">Conhecer o aplicativo</a>
+          <a class="btn btn-secondary" href="politica-de-privacidade.html">Política de privacidade</a>
+        </div>
+        <p class="note">Android (em preparação para o Google Play) e Windows. Pacote Android: <strong>visita.em.dia</strong>.</p>
+      </div>
+      <figure class="hero-shot">
+        <img src="assets/screenshot-hoje.png" width="1200" height="675" alt="Tela Hoje do Visita em dia, com atrasos, roteiro de visitas e capacidade da equipe.">
+        <figcaption>Interface real do aplicativo, com dados fictícios.</figcaption>
+      </figure>
+    </section>
+
+    <section id="sobre">
+      <div class="section-head">
+        <p class="kicker">O que faz</p>
+        <h2>Da avaliação à visita, sem planilhas soltas</h2>
+        <p>O Visita em dia foi criado para equipes de atenção domiciliar que precisam justificar a frequência das visitas e manter a agenda coerente com a capacidade real do serviço.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <span class="num">1</span>
+          <h3>Cadastro e histórico</h3>
+          <p>Identificação, contato, endereço, equipe, cuidador, condições de saúde e dispositivos. Busca por nome, cadastro, CNS, CPF, telefone ou rua.</p>
+        </div>
+        <div class="card">
+          <span class="num">2</span>
+          <h3>Avaliação e classificação</h3>
+          <p>Questionário configurável com pontuação, regras, classificação sugerida e justificativa editável. As fichas guardam a versão do instrumento usada.</p>
+        </div>
+        <div class="card">
+          <span class="num">3</span>
+          <h3>Agenda que respeita a equipe</h3>
+          <p>Planos por profissional, dias de visita, capacidade diária, bloqueios, remanejamento e registro de visitas realizadas ou faltas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="two">
+        <div>
+          <p class="kicker">Como funciona</p>
+          <h2>Simples para a rotina, cuidadoso com os dados</h2>
+          <ul class="clean">
+            <li>Funciona offline, sem servidor do desenvolvedor e sem conta obrigatória.</li>
+            <li>Os dados ficam no armazenamento privado do aplicativo, protegidos por criptografia.</li>
+            <li>O backup é criado pelo usuário, com senha própria, e pode ser guardado no aparelho ou no próprio Google Drive.</li>
+            <li>Não há anúncios, rastreamento, telemetria ou venda de dados.</li>
+            <li>Relatórios em CSV e ficha em PDF para o trabalho da equipe.</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <h3>O que o aplicativo não é</h3>
+          <p>O Visita em dia não é prontuário eletrônico, não substitui o e-SUS ou os sistemas oficiais e não é um dispositivo médico.</p>
+          <p>A classificação e a frequência são sugestões do instrumento configurado pela equipe. A decisão final é sempre do profissional responsável.</p>
+          <p><a href="aviso-legal.html">Leia o aviso legal completo</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <p class="kicker">Por dentro</p>
+        <h2>Telas do aplicativo</h2>
+        <p>As imagens usam dados fictícios e mostram a versão desktop; a versão Android mantém a mesma lógica e as mesmas telas.</p>
+      </div>
+      <div class="shots">
+        <figure>
+          <img src="assets/screenshot-agenda.png" width="1200" height="675" alt="Agenda semanal com dias de visita, capacidade e roteiro da equipe.">
+          <figcaption>Agenda semanal com capacidade e roteiro.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/screenshot-ficha.png" width="1200" height="675" alt="Ficha de avaliação com respostas, pontuação, classificação e justificativa.">
+          <figcaption>Ficha com pontuação, classificação e justificativa.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="privacidade">
+      <div class="section-head">
+        <p class="kicker">Privacidade</p>
+        <h2>Seus dados ficam com você</h2>
+      </div>
+      <div class="two">
+        <div>
+          <p>O desenvolvedor não recebe, não acessa e não armazena os dados inseridos no aplicativo. A base pertence à unidade de saúde que usa o programa.</p>
+          <p>O acesso ao Google Drive é <strong>opcional</strong> e serve apenas para gravar uma cópia de segurança cifrada na pasta privada do aplicativo dentro da conta Google do próprio usuário. O aplicativo não lê nem altera os outros arquivos do Drive.</p>
+          <p>O usuário pode desconectar a conta e revogar o acesso a qualquer momento em <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a>.</p>
+          <p><a href="politica-de-privacidade.html">Política de privacidade completa</a> · <a href="termos-de-servico.html">Termos de serviço</a></p>
+        </div>
+        <div class="callout">
+          <h3>Uso limitado das APIs do Google</h3>
+          <p>O uso das informações recebidas das APIs do Google pelo Visita em dia está em conformidade com a Política de Dados do Usuário dos Serviços de API do Google, incluindo os requisitos de Uso Limitado.</p>
+          <p>Os dados do Google não são usados para publicidade, perfilamento, concessão de crédito nem são vendidos ou compartilhados com terceiros.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="documentos">
+      <div class="section-head">
+        <p class="kicker">Documentos</p>
+        <h2>Transparência e condições de uso</h2>
+      </div>
+      <div class="legal-links">
+        <a href="politica-de-privacidade.html">
+          <strong>Política de privacidade</strong>
+          <span>Quais dados o aplicativo trata, onde ficam, por quanto tempo e como exercer seus direitos (LGPD).</span>
+        </a>
+        <a href="termos-de-servico.html">
+          <strong>Termos de serviço</strong>
+          <span>O que o aplicativo faz, responsabilidades da equipe, uso permitido, licença e limitações.</span>
+        </a>
+        <a href="aviso-legal.html">
+          <strong>Aviso legal</strong>
+          <span>Limites de uso, emergências e o que o aplicativo não substitui.</span>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <div class="en" lang="en">
+        <p class="kicker">English summary</p>
+        <p><strong>Visita em dia</strong> is an offline-first Android and Windows app for home-care health teams. It helps register patients, apply a configurable assessment, justify a care classification, and schedule visits according to team capacity. Patient data is stored locally and encrypted; there is no developer server, advertising, or telemetry. An optional backup can be saved, encrypted with a user-chosen password, to the user's own Google Drive app-data folder. The app is not an electronic medical record and does not replace official health systems or clinical judgement.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 Visita em dia · wavizo · organização de visitas domiciliares</span>
+      <span><a href="mailto:mmr05@hotmail.com">mmr05@hotmail.com</a> · <a href="tel:+5511978831938">(11) 97883-1938</a></span>
+    </div>
+  </footer>
+</body>
+</html>

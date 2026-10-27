@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aviso legal — Visita em dia</title>
+  <meta name="description" content="Aviso legal do Visita em dia: limites de uso, emergências, dados e instrumentos de terceiros.">
+  <style>
+    :root { --paper:#f6f1e6; --card:#fffdf8; --ink:#202a25; --muted:#5f665e; --line:#ded5c5; --green:#174a3a; --clay:#a5553c; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.6 "Segoe UI",system-ui,sans-serif; }
+    main { max-width:780px; margin:0 auto; padding:48px 24px 72px; }
+    .mark { width:46px; height:46px; border-radius:13px; background:var(--green); display:flex; align-items:center; justify-content:center; color:#fff8ec; font:22px Georgia,serif; }
+    .brand { display:flex; align-items:center; gap:12px; margin-bottom:28px; }
+    .brand strong { display:block; font:24px/1 Georgia,serif; color:var(--green); }
+    .brand span { display:block; color:var(--muted); font-size:11px; letter-spacing:.12em; text-transform:uppercase; }
+    article { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:34px 36px; box-shadow:0 8px 24px rgba(32,42,37,.04); }
+    h1 { font:400 36px/1.1 Georgia,serif; color:var(--green); margin:0 0 8px; }
+    h2 { font:400 23px/1.2 Georgia,serif; color:var(--green); margin:30px 0 8px; }
+    p, li { color:#3f4a43; }
+    .updated { color:var(--muted); font-size:13px; margin-bottom:24px; }
+    a { color:var(--green); text-underline-offset:3px; }
+    .back { display:inline-block; margin-top:22px; color:var(--clay); font-size:13px; }
+    .box { border-left:3px solid var(--clay); padding:10px 14px; background:#fdf5ef; margin:18px 0; }
+    footer { color:var(--muted); font-size:12px; margin-top:22px; text-align:center; }
+    @media (max-width:600px) { article { padding:24px 18px; } h1 { font-size:30px; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="brand">
+    <div class="mark">V</div>
+    <div><strong>Visita em dia</strong><span>cuidado que chega</span></div>
+  </div>
+  <article>
+    <h1>Aviso legal</h1>
+    <p class="updated">Última atualização: 27 de outubro de 2026.</p>
+
+    <div class="box">
+      <strong>O Visita em dia não substitui o prontuário, o e-SUS ou o julgamento clínico.</strong>
+    </div>
+
+    <p>O aplicativo é uma ferramenta de organização local. Ele não é um dispositivo médico, não emite diagnóstico, não prescreve tratamento e não decide sozinho a elegibilidade de ninguém. As classificações, frequências e datas são sugestões produzidas a partir de regras configuradas pela equipe; a decisão final é do profissional responsável.</p>    <h2>1. Limites de uso</h2>
+    <ul>
+      <li>O aplicativo não garante que um paciente seja aceito em programa, serviço ou equipe de atenção domiciliar.</li>
+      <li>As perguntas e pontuações do instrumento padrão são uma referência; a unidade deve validá-las com seu protocolo local e com a coordenação.</li>
+      <li>As datas sugeridas pela agenda dependem dos dias, da capacidade e das informações cadastradas. Elas não substituem a conferência da equipe.</li>
+      <li>Informações clínicas devem ser registradas também nos sistemas oficiais exigidos pela unidade.</li>
+    </ul>
+
+    <h2>2. Emergências</h2>
+    <p>O Visita em dia não é um canal de emergência. Em situações de risco imediato, procure o serviço de urgência apropriado ou acione o SAMU (192). Não espere por uma visita programada para atender uma emergência.</p>
+
+    <h2>3. Dados e responsabilidade</h2>
+    <p>A unidade usuária é responsável pela exatidão dos dados, pelo sigilo, pelo backup e pelo descarte. O aplicativo mantém os dados localmente e não tem acesso remoto à base. A perda de dados por falta de backup, uso indevido ou falha do computador não pode ser atribuída ao desenvolvedor.</p>
+
+    <h2>4. Instrumentos de terceiros</h2>
+    <p>O instrumento padrão faz referência à escala de complexidade descrita por Savassi et al. (2012) e ao Caderno de Atenção Domiciliar do Ministério da Saúde (2013). A transcrição, a adaptação e a decisão de uso são responsabilidade da equipe. Fontes e versões ficam registradas dentro de cada ficha.</p>
+
+    <h2>5. Contato</h2>
+    <p>Dúvidas sobre o uso ou sobre este aviso: <strong>mmr05@hotmail.com</strong> · <strong>(11) 97883-1938</strong>.</p>
+
+    <a class="back" href="index.html">Voltar ao Visita em dia</a>
+  </article>
+  <script>
+    if (new URLSearchParams(location.search).has("embed")) {
+      document.querySelector(".back")?.remove();
+      document.querySelector("footer")?.remove();
+    }
+  </script>
+  <footer>Visita em dia · organização de visitas domiciliares</footer>
+</main>
+</body>
+</html>
