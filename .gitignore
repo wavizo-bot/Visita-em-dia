@@ -1,0 +1,25 @@
+# Dependências e artefatos de build
+node_modules/
+dist/
+build/
+
+# Logs e arquivos temporários
+*.log
+log.txt
+tmp/
+*.tmp
+Thumbs.db
+.DS_Store
+
+# Segredos, certificados e credenciais
+.env*
+*.pfx
+*.key
+*.p12
+client_secret*.json
+google-client.json
+
+# Dados de execução e perfis
+*.WebView2/
+*.db
+*.sqlite
